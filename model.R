@@ -20,7 +20,7 @@ read.file = function(loc) {
       Reviewers = as.numeric(gsub(" .+$","",Reviewers)),
       Price = as.numeric(gsub("[^0-9.]","",Price)),
       Reviewers = ifelse(is.na(Reviewers),0,Reviewers),
-      Location = loc
+      Location = gsub("^data/(.+)[.]csv$","\\1",loc)
     ) %>%
       filter(!is.na(Restaurant),
              !(Restaurant == ""))
